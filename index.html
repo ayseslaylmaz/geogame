@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Sky Cargo | GeoGame</title>
+
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+
+        <header class="header">
+            <div>
+                <h1>✈ SKY CARGO</h1>
+                <p>Plan your route. Deliver your cargo.</p>
+            </div>
+
+            <div class="level-box">
+                <span>LEVEL 1</span>
+                <button id="start-button">Start Game</button>
+            </div>
+        </header>
+
+        <!-- Game statistics -->
+        <section class="stats">
+            <div class="stat">
+                <span>⏱ TIME</span>
+                <strong id="timer">02:00</strong>
+            </div>
+
+            <div class="stat">
+                <span>⛽ FUEL</span>
+                <strong id="fuel">40</strong>
+            </div>
+
+            <div class="stat">
+                <span>🪙 COINS</span>
+                <strong id="coins">18</strong>
+            </div>
+
+            <div class="stat">
+                <span>🏆 SCORE</span>
+                <strong id="score">0</strong>
+            </div>
+
+            <div class="stat">
+                <span>📦 ORDERS</span>
+                <strong id="progress">0 / 4</strong>
+            </div>
+        </section>
+
+        <!-- Main game layout -->
+        <main class="game-layout">
+
+            <!-- Left: Aircraft -->
+            <aside class="panel aircraft-panel">
+                <h2>🛩 My Aircraft</h2>
+
+                <div class="plane-display">✈</div>
+
+                <h3>Mini Cargo</h3>
+
+                <p>📍 <span id="current-location">
+                    Ankara
+                </span></p>
+
+                <p>Capacity:
+                    <strong id="cargo-count">0 / 5</strong>
+                </p>
+
+                <div class="capacity-bar">
+                    <div id="capacity-fill"></div>
+                </div>
+
+                <h3>Packages on Board</h3>
+                <div id="cargo-list">
+                    No cargo loaded.
+                </div>
+
+                <button id="refuel-button">
+                    Buy Fuel
+                </button>
+            </aside>
+
+            <!-- Center: Map -->
+            <section class="map-section">
+                <div id="map"></div>
+
+                <div class="map-status" id="map-status">
+                    Your aircraft is in Ankara.
+                </div>
+            </section>
+
+            <!-- Right: Orders and flights -->
+            <aside class="right-sidebar">
+
+                <section class="panel flight-panel">
+                    <h2>✈ Flight Planner</h2>
+
+                    <div id="flight-info">
+                        Select an airport on the map.
+                    </div>
+
+                    <button id="fly-button" disabled>
+                        Start Flight
+                    </button>
+                </section>
+
+                <section class="panel orders-panel">
+                    <h2>📦 Cargo Orders</h2>
+
+                    <p class="hint">
+                        Load packages in Ankara.
+                        Deliver them before time runs out.
+                    </p>
+
+                    <div id="orders-list"></div>
+                </section>
+
+            </aside>
+
+        </main>
+
+        <div id="message-box"
+             role="status"
+             aria-live="polite">
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="js/airports.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
