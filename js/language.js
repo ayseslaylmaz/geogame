@@ -1,339 +1,367 @@
 
-/* AYSSKY CARGO - LANGUAGE SYSTEM */
-
 "use strict";
 
-const LANGUAGE_KEY = "ayssky-language";
+/* AYSSKY CARGO - Turkish / English interface */
 
-let currentLanguage = "en";
+(() => {
+  const STORAGE_KEY = "ayssky-language";
 
-try {
-  currentLanguage =
-    localStorage.getItem(LANGUAGE_KEY) || "en";
-} catch (_) {}
+  const dictionary = {
+    "GEOGRAPHY · DELIVERY · STRATEGY": "COĞRAFYA · TESLİMAT · STRATEJİ",
+    "Start Game": "Oyuna Başla",
+    "Restart Game": "Yeniden Başlat",
+    "Next Level →": "Sonraki Seviye →",
+    "TIME": "SÜRE",
+    "ORDERS": "SİPARİŞLER",
+    "FUEL": "YAKIT",
+    "COINS": "JETON",
+    "SCORE": "PUAN",
+    "RECORD": "REKOR",
+    "HIGH SCORE": "REKOR",
+    "YOUR FLIGHT": "UÇUŞUN",
+    "Flight Details": "Uçuş Bilgileri",
+    "Selected route": "Seçilen rota",
+    "Aircraft": "Uçak",
+    "Cargo & fuel control": "Kargo ve yakıt kontrolü",
+    "Location": "Konum",
+    "Plane": "Uçak",
+    "Active Cargo Hubs": "Aktif Kargo Merkezleri",
+    "Cargo Capacity": "Kargo Kapasitesi",
+    "Loaded Cargo": "Yüklenen Kargo",
+    "Fuel Station": "Yakıt İstasyonu",
+    "Aircraft Upgrade": "Uçak Geliştirme",
+    "No cargo loaded.": "Henüz kargo yüklenmedi.",
+    "Orders": "Siparişler",
+    "Pickup and delivery tasks": "Alım ve teslimat görevleri",
+    "Choose a delivery and load the packages": "Sipariş seç ve paketleri yükle",
+    "No route selected": "Rota seçilmedi",
+    "No destination selected": "Hedef seçilmedi",
+    "Choose an airport to preview the flight.": "Uçuşu görmek için havalimanı seç.",
+    "Choose an airport on the map to preview the flight.": "Uçuşu görmek için haritadan havalimanı seç.",
+    "Select a destination airport.": "Hedef havalimanını seç.",
+    "Select a destination to enable flight.": "Uçuş için hedef seç.",
+    "Start Flight ✈": "Uçuşu Başlat ✈",
+    "WAITING": "BEKLENİYOR",
+    "READY": "HAZIR",
+    "BLOCKED": "ENGELLENDİ",
+    "Distance": "Mesafe",
+    "Time": "Süre",
+    "Fuel": "Yakıt",
+    "Fee": "Ücret",
+    "Delivered": "Teslim",
+    "On Board": "Uçakta",
+    "At Pickup": "Merkezde",
+    "Load Packages": "Paketleri Yükle",
+    "Free space now": "Boş kapasite",
+    "Pickup hub": "Alım merkezi",
+    "Delivery city": "Teslimat şehri",
+    "Route time": "Uçuş süresi",
+    "Route fuel": "Rota yakıtı",
+    "Reward": "Ödül",
+    "MAX LEVEL": "SON SEVİYE",
+    "Maximum aircraft upgrade reached.": "Uçak en yüksek seviyede.",
+    "Fuel tank is already full.": "Yakıt deposu zaten dolu.",
+    "Start the game first.": "Önce oyunu başlat.",
+    "Aircraft is already in flight.": "Uçak zaten uçuşta.",
+    "Complete the delivery check before flying again.": "Yeni uçuş öncesinde teslimat sorusunu tamamla.",
+    "You are already at this airport.": "Zaten bu havalimanındasın.",
+    "Ready for departure.": "Kalkışa hazır.",
+    "Select a destination airport on the map.": "Haritadan hedef havalimanı seç.",
+    "Press Start Game to begin.": "Başlamak için Oyuna Başla'ya bas.",
+    "Welcome to AYSSKY CARGO.": "AYSSKY CARGO'ya hoş geldin.",
+    "Cargo Hub": "Kargo Merkezi",
+    "Airport": "Havalimanı",
+    "Your Plane": "Uçağın",
+    "Hub": "Merkez",
+    "WELCOME": "HOŞ GELDİN",
+    "GAME GUIDE": "OYUN REHBERİ",
+    "How to Play ✈": "Nasıl Oynanır ✈",
+    "How to play": "Nasıl oynanır",
+    "Start Adventure": "Maceraya Başla",
+    "Close Guide": "Rehberi Kapat",
+    "A geography and logistics game.": "Bir coğrafya ve lojistik oyunu.",
+    "1. Load cargo": "1. Kargo yükle",
+    "2. Plan your route": "2. Rotanı planla",
+    "3. Deliver correctly": "3. Teslimatı tamamla",
+    "4. Earn and upgrade": "4. Kazan ve geliştir",
+    "Travel to active cargo hubs and load packages. Level 1 starts from Ankara.": "Aktif kargo merkezlerinden paketleri al. İlk seviyede Ankara'dan başlarsın.",
+    "Choose your destination, manage fuel, coins and time carefully.": "Hedefini seç; yakıtını, jetonunu ve süreni dikkatli kullan.",
+    "When you arrive, answer the geography question correctly to complete the delivery.": "Varınca coğrafya sorusunu doğru cevaplayarak teslimatı tamamla.",
+    "Gain coins from deliveries, upgrade your aircraft and unlock the next levels.": "Teslimatlardan jeton kazan, uçağını geliştir ve yeni seviyelerin kilidini aç.",
+    "Score comes only from completed orders.": "Siparişler tamamlandığında puan kazanılır.",
+    "Wrong answer = 5 seconds penalty.": "Yanlış cevap = 5 saniye ceza.",
+    "Hint = 3 coins.": "İpucu = 3 jeton.",
+    "Level 2 adds İstanbul as a cargo hub.": "2. seviyede İstanbul kargo merkezi eklenir.",
+    "Level 3 adds Dubai as a cargo hub.": "3. seviyede Dubai kargo merkezi eklenir.",
+    "Become a cargo pilot and complete deliveries by exploring the world!": "Kargo pilotu ol, dünyayı keşfederek teslimatları tamamla!",
+    "Collect your cargo": "Kargonu al",
+    "Select an airport": "Havalimanı seç",
+    "Fly and deliver": "Uç ve teslim et",
+    "Earn coins and upgrade": "Jeton kazan ve geliştir",
+    "Go to a cargo hub and press Load Packages. Each order must fit completely in your plane.": "Kargo merkezine git ve Paketleri Yükle'ye bas. Siparişin tamamı uçağa sığmalı.",
+    "Click an airport on the map. Check the distance, flight time, fuel and coin cost.": "Haritada havalimanı seç. Mesafeyi, uçuş süresini, yakıtı ve jeton ücretini kontrol et.",
+    "Press Start Flight. At the destination, answer the geography question correctly to complete your delivery.": "Uçuşu Başlat'a bas. Hedefte coğrafya sorusunu doğru cevaplayıp teslimatı tamamla.",
+    "Deliver packages to earn coins. Buy fuel when needed and upgrade your aircraft at Ankara.": "Teslimatla jeton kazan. Gerektiğinde yakıt al ve uçağını Ankara'da geliştir.",
+    "⭐ Important Rules": "⭐ Önemli Kurallar",
+    "🌍 Game Levels": "🌍 Oyun Seviyeleri",
+    "✓ Completed order: +20 points": "✓ Tamamlanan sipariş: +20 puan",
+    "✓ Completed level: +25 bonus points": "✓ Tamamlanan seviye: +25 ek puan",
+    "✕ Wrong answer: −5 seconds": "✕ Yanlış cevap: −5 saniye",
+    "💡 Hint: 3 coins": "💡 İpucu: 3 jeton",
+    "⛽ Flights require enough fuel, coins and time": "⛽ Uçuş için yeterli yakıt, jeton ve süre gerekir",
+    "Got it! ✈": "Anladım! ✈",
+    "Close guide": "Rehberi kapat",
+    "DELIVERY CHECK": "TESLİMAT KONTROLÜ",
+    "Cargo Verification": "Kargo Doğrulama",
+    "Use Hint (3 Coins)": "İpucu Kullan (3 Jeton)",
+    "Hint used: two incorrect answers removed.": "İpucu kullanıldı: iki yanlış seçenek kaldırıldı.",
+    "Load cargo from active hubs and complete all deliveries." : "Aktif kargo merkezlerinden paketleri yükle ve tüm teslimatları tamamla."
+  };
 
-/*
-  English text -> Turkish text.
-  English is the original language of the game.
-*/
+  // Dynamic values produced by game.js.
+  const patterns = [
+    [/^Level (\d+) · /, (_, n) => `Seviye ${n} · `],
+    [/^Level (\d+) started\./, (_, n) => `${n}. seviye başladı.`],
+    [/^Level (\d+) completed!/, (_, n) => `${n}. seviye tamamlandı!`],
+    [/^Go to (.+) to load$/, (_, city) => `Yüklemek için ${city} merkezine git`],
+    [/^Pickup at /, "Alım: "],
+    [/ · Deliver to /, " · Teslimat: "],
+    [/^Load Packages$/, "Paketleri Yükle"],
+    [/^Upgrade \((\d+) Coins\)$/, "Geliştir ($1 Jeton)"],
+    [/^Buy 5 Fuel \((\d+) Coins\)$/, "5 Yakıt Al ($1 Jeton)"],
+    [/^Fill Tank \((\d+) Coins\)$/, "Depoyu Doldur ($1 Jeton)"],
+    [/^Not enough fuel\./, "Yetersiz yakıt."],
+    [/^Not enough coins\./, "Yetersiz jeton."],
+    [/^Not enough time\./, "Yetersiz süre."],
+    [/^Not enough cargo space!/, "Yeterli kargo alanı yok!"],
+    [/^Flight started:/, "Uçuş başladı:"],
+    [/^Flying /, "Uçuş: "],
+    [/^Arrived at /, "Varış: "],
+    [/^Time is up\./, "Süre doldu."],
+    [/^All levels completed!/, "Bütün seviyeler tamamlandı!"],
+    [/^Delivery approved:/, "Teslimat onaylandı:"],
+    [/^Incorrect answer:/, "Yanlış cevap:"],
+    [/^Order completed/, "Sipariş tamamlandı"],
+    [/\bpackage\(s\)\b/g, "paket"],
+    [/\bpackages\b/g, "paket"],
+    [/\bpackage\b/g, "paket"],
+    [/\bcoins\b/g, "jeton"],
+    [/\bpoints\b/g, "puan"],
+    [/\bsec\b/g, "sn"]
+  ];
 
-const UI_TR = {
-  "GEOGRAPHY · DELIVERY · STRATEGY":
-    "COĞRAFYA · TESLİMAT · STRATEJİ",
-
-  "Start Adventure": "Oyuna Başla",
-  "Close Guide": "Rehberi Kapat",
-
-  "Start Game": "Oyuna Başla",
-  "Restart Game": "Yeniden Başlat",
-  "Next Level →": "Sonraki Seviye →",
-
-  "TIME": "SÜRE",
-  "ORDERS": "SİPARİŞLER",
-  "FUEL": "YAKIT",
-  "COINS": "JETON",
-  "SCORE": "PUAN",
-  "HIGH SCORE": "REKOR",
-
-  "remaining": "kalan süre",
-  "completed": "tamamlanan",
-  "available": "mevcut",
-  "balance": "bakiye",
-  "points": "puan",
-  "best run": "en iyi sonuç",
-
-  "QUICK FLIGHT": "HIZLI UÇUŞ",
-  "No destination selected": "Hedef seçilmedi",
-  "Choose an airport on the map to preview the flight.":
-    "Uçuşu görmek için haritadan havalimanı seç.",
-  "Start Flight ✈": "Uçuşu Başlat ✈",
-
-  "Aircraft Control": "Uçak Kontrolü",
-  "aircraft · cargo · fuel": "uçak · kargo · yakıt",
-  "CURRENT AIRPORT": "MEVCUT HAVALİMANI",
-  "AIRCRAFT": "UÇAK",
-  "Active Cargo Hubs": "Kargo Merkezleri",
-  "Cargo Capacity": "Kargo Kapasitesi",
-  "Loaded Packages": "Yüklenen Paketler",
-  "Aircraft Upgrades": "Uçak Geliştirmeleri",
-  "Fuel Station": "Yakıt İstasyonu",
-  "No cargo loaded.": "Henüz kargo yüklenmedi.",
-  "Load packages from active cargo hubs.":
-    "Aktif kargo merkezlerinden paket yükle.",
-  "Upgrade is available only at Ankara.":
-    "Uçak geliştirme yalnızca Ankara'da yapılabilir.",
-  "Fuel costs more outside Ankara.":
-    "Ankara dışında yakıt daha pahalıdır.",
-
-  "Operations Map": "Operasyon Haritası",
-  "Select a destination airport":
-    "Hedef havalimanını seç",
-  "Hub": "Merkez",
-  "Airport": "Havalimanı",
-  "Aircraft": "Uçak",
-  "Press Start Game to begin.":
-    "Başlamak için Oyuna Başla'ya bas.",
-
-  "Selected Flight": "Seçilen Uçuş",
-  "route preview": "rota önizlemesi",
-  "No route selected": "Rota seçilmedi",
-  "WAITING": "BEKLENİYOR",
-  "READY": "HAZIR",
-  "BLOCKED": "UÇUŞ ENGELLİ",
-  "Distance": "Mesafe",
-  "Time": "Süre",
-  "Fuel": "Yakıt",
-  "Fee": "Ücret",
-
-  "Orders": "Siparişler",
-  "pickup and delivery tasks":
-    "kargo alma ve teslimat görevleri",
-  "Delivered": "Teslim",
-  "On Board": "Uçakta",
-  "At Pickup": "Merkezde",
-  "Free space now": "Boş kapasite",
-  "Pickup hub": "Alış merkezi",
-  "Delivery city": "Teslimat şehri",
-  "Route time": "Rota süresi",
-  "Route fuel": "Rota yakıtı",
-  "Reward": "Ödül",
-  "Load Packages": "Paketleri Yükle",
-  "Order completed · +20 points":
-    "Sipariş tamamlandı · +20 puan",
-
-  "WELCOME": "HOŞ GELDİN",
-  "A geography and logistics game.":
-    "Coğrafya ve lojistik strateji oyunu.",
-  "1. Load cargo": "1. Kargo Yükle",
-  "2. Plan your route": "2. Rotanı Planla",
-  "3. Deliver correctly": "3. Teslimatı Tamamla",
-  "4. Earn and upgrade": "4. Kazan ve Geliştir",
-
-  "Travel to active cargo hubs and load packages. Level 1 starts from Ankara.":
-    "Aktif kargo merkezlerine git ve paketleri yükle. İlk seviyede Ankara'dan başlarsın.",
-
-  "Choose your destination, manage fuel, coins and time carefully.":
-    "Hedefini seç; yakıtını, jetonlarını ve süreni dikkatli kullan.",
-
-  "When you arrive, answer the geography question correctly to complete the delivery.":
-    "Hedefe ulaştığında coğrafya sorusunu doğru cevaplayarak teslimatı tamamla.",
-
-  "Gain coins from deliveries, upgrade your aircraft and unlock the next levels.":
-    "Teslimatlardan jeton kazan, uçağını geliştir ve yeni seviyeleri aç.",
-
-  "Score comes only from completed orders.":
-    "Puan yalnızca tamamlanan siparişlerden kazanılır.",
-  "Wrong answer = 5 seconds penalty.":
-    "Yanlış cevap = 5 saniye ceza.",
-  "Hint = 3 coins.":
-    "İpucu = 3 jeton.",
-  "Level 2 adds İstanbul as a cargo hub.":
-    "2. seviyede İstanbul kargo merkezi açılır.",
-  "Level 3 adds Dubai as a cargo hub.":
-    "3. seviyede Dubai kargo merkezi açılır.",
-
-  "Rehberi Kapat": "Rehberi Kapat",
-  "Oyuna Başla": "Oyuna Başla",
-
-  "DELIVERY CHECK": "TESLİMAT KONTROLÜ",
-  "Cargo Verification": "Kargo Doğrulama",
-  "Use Hint (3 Coins)": "İpucu Kullan (3 Jeton)",
-
-  "Select a destination airport on the map.":
-    "Haritadan bir hedef havalimanı seç.",
-  "Start the game first.":
-    "Önce oyunu başlat.",
-  "Aircraft is already in flight.":
-    "Uçak şu anda uçuşta.",
-  "Complete the delivery check before flying again.":
-    "Yeni uçuş öncesinde teslimat sorusunu tamamla.",
-  "You are already at this airport.":
-    "Zaten bu havalimanındasın.",
-  "Ready for departure.":
-    "Uçuşa hazırsın.",
-  "Fuel tank is already full.":
-    "Yakıt deposu zaten dolu.",
-  "Maximum aircraft upgrade reached.":
-    "En yüksek uçak seviyesine ulaşıldı.",
-  "No available space or no package left to load.":
-    "Yeterli alan yok veya yüklenecek paket kalmadı.",
-  "Welcome to AYSSKY CARGO.":
-    "AYSSKY CARGO'ya hoş geldin."
-};
-
-/*
-  Some game messages contain variable numbers
-  or airport names. Translate their fixed parts.
-*/
-const UI_PATTERNS = [
-  [/\bNot enough fuel\./g, "Yetersiz yakıt."],
-  [/\bNot enough coins\./g, "Yetersiz jeton."],
-  [/\bNot enough time\./g, "Yetersiz süre."],
-  [/\bNeed (\d+)/g, "$1 gerekli"],
-  [/\byou have (\d+)/g, "mevcut: $1"],
-  [/\bremaining (\d+) sec/g, "kalan $1 saniye"],
-  [/\bsec\b/g, "sn"],
-  [/\bcoins\b/g, "jeton"],
-  [/\bpackage\(s\)/g, "paket"],
-  [/\bpackages\b/g, "paket"],
-  [/\bper package\b/g, "paket başına"],
-  [/\bPickup at\b/g, "Alış merkezi:"],
-  [/\bDeliver to\b/g, "Teslimat:"],
-  [/\bGo to (.*?) to load\b/g, "Yüklemek için $1'a git"],
-  [/\bFlight started:/g, "Uçuş başladı:"],
-  [/\bFlying\b/g, "Uçuş:"],
-  [/\bArrived at\b/g, "Varış:"],
-  [/\bNot enough cargo space!/g, "Yeterli kargo alanı yok!"],
-  [/\bFree space now\b/g, "Boş kapasite"],
-  [/\bOrder completed\b/g, "Sipariş tamamlandı"],
-  [/\bLevel (\d+) started\./g, "$1. seviye başladı."],
-  [/\bLevel (\d+) completed!/g, "$1. seviye tamamlandı!"],
-  [/\bAll levels completed!/g, "Bütün seviyeler tamamlandı!"],
-  [/\bTime is up\./g, "Süre doldu."],
-  [/\bRestart Game\b/g, "Yeniden Başlat"],
-  [/\bUpgrade \((\d+) Coins\)/g, "Geliştir ($1 Jeton)"],
-  [/\bBuy 5 Fuel \((\d+) Coins\)/g, "5 Yakıt Al ($1 Jeton)"],
-  [/\bFill Tank \((\d+) Coins\)/g, "Depoyu Doldur ($1 Jeton)"]
-];
-
-const originalText = new WeakMap();
-const translatedText = new WeakMap();
-
-function translateValue(value) {
-  if (currentLanguage !== "tr") return value;
-
-  const match = value.match(/^(\s*)(.*?)(\s*)$/s);
-  if (!match) return value;
-
-  const start = match[1];
-  const content = match[2];
-  const end = match[3];
-
-  let translated = UI_TR[content] || content;
-
-  for (const [pattern, replacement] of UI_PATTERNS) {
-    translated = translated.replace(pattern, replacement);
-  }
-
-  return start + translated + end;
-}
-
-function translateNode(node) {
-  if (!node || node.nodeType !== Node.TEXT_NODE) return;
-
-  const parent = node.parentElement;
-
-  if (
-    parent &&
-    ["SCRIPT", "STYLE", "NOSCRIPT"].includes(parent.tagName)
-  ) return;
-
-  const previousOutput = translatedText.get(node);
-
-  if (
-    !originalText.has(node) ||
-    (previousOutput !== undefined &&
-      node.nodeValue !== previousOutput)
-  ) {
-    originalText.set(node, node.nodeValue);
-  }
-
-  const source = originalText.get(node);
-  const result = translateValue(source);
-
-  translatedText.set(node, result);
-
-  if (node.nodeValue !== result) {
-    node.nodeValue = result;
-  }
-}
-
-function translateTree(root) {
-  if (!root) return;
-
-  if (root.nodeType === Node.TEXT_NODE) {
-    translateNode(root);
-    return;
-  }
-
-  const walker = document.createTreeWalker(
-    root,
-    NodeFilter.SHOW_TEXT
-  );
-
-  let node;
-  while ((node = walker.nextNode())) {
-    translateNode(node);
-  }
-}
-
-function setGameLanguage(language) {
-  currentLanguage = language === "tr" ? "tr" : "en";
-
-  document.documentElement.lang = currentLanguage;
+  let currentLanguage = "en";
 
   try {
-    localStorage.setItem(LANGUAGE_KEY, currentLanguage);
+    currentLanguage =
+      localStorage.getItem(STORAGE_KEY) === "tr"
+        ? "tr"
+        : "en";
   } catch (_) {}
 
-  document.getElementById("lang-tr")
-    .classList.toggle("active", currentLanguage === "tr");
+  const originals = new WeakMap();
+  const outputs = new WeakMap();
 
-  document.getElementById("lang-en")
-    .classList.toggle("active", currentLanguage === "en");
+  
+function translateText(value) {
+  if (currentLanguage === "en") {
+    return value;
+  }
 
-  document.getElementById("lang-tr")
-    .setAttribute("aria-pressed", currentLanguage === "tr");
+  const match = value.match(/^(\s*)([\s\S]*?)(\s*)$/);
 
-  document.getElementById("lang-en")
-    .setAttribute("aria-pressed", currentLanguage === "en");
+  if (!match || !match[2]) {
+    return value;
+  }
 
-  translateTree(document.body);
-}
+  const start = match[1];
+  const end = match[3];
 
-document.getElementById("lang-tr")
-  .addEventListener("click", () => setGameLanguage("tr"));
+  // Normalize spaces and line breaks.
+  const content = match[2]
+    .replace(/\s+/g, " ")
+    .trim();
 
-document.getElementById("lang-en")
-  .addEventListener("click", () => setGameLanguage("en"));
+  // First try an exact translation.
+  let result = dictionary[content];
 
-/*
-  The game creates order cards and messages dynamically.
-  Translate new text when the DOM changes.
-*/
-const languageObserver = new MutationObserver(records => {
-  for (const record of records) {
-    if (record.type === "characterData") {
-      translateNode(record.target);
-    }
+  // Also support headings with an emoji.
+  if (!result) {
+    const emojiHeading = content.match(
+      /^([📦🧭✈🌍📍]\s*)(.+)$/u
+    );
 
-    if (record.type === "childList") {
-      record.addedNodes.forEach(translateTree);
+    if (emojiHeading) {
+      const translatedHeading =
+        dictionary[emojiHeading[2]];
+
+      if (translatedHeading) {
+        result =
+          emojiHeading[1] + translatedHeading;
+      }
     }
   }
-});
 
-languageObserver.observe(document.body, {
-  subtree: true,
-  childList: true,
-  characterData: true
-});
+  // Keep the original when no translation exists.
+  if (!result) {
+    result = content;
+  }
 
-/* Refresh Leaflet if layout size changes */
-if (typeof ResizeObserver !== "undefined") {
-  const mapElement = document.getElementById("map");
+  // Translate dynamic game messages.
+  for (const [pattern, replacement] of patterns) {
+    result = result.replace(pattern, replacement);
+  }
 
-  const mapResizeObserver = new ResizeObserver(() => {
-    requestAnimationFrame(() => {
-      if (typeof map !== "undefined") {
-        map.invalidateSize({ pan: false });
-      }
-    });
-  });
-
-  mapResizeObserver.observe(mapElement);
+  return start + result + end;
 }
 
-setGameLanguage(currentLanguage);
 
-console.log("AYSSKY CARGO language selector ready.");
+  function translateNode(node) {
+    if (!node || node.nodeType !== Node.TEXT_NODE) return;
+
+    const parent = node.parentElement;
+
+    if (
+      parent &&
+      ["SCRIPT", "STYLE", "NOSCRIPT"].includes(parent.tagName)
+    ) return;
+
+    const last = outputs.get(node);
+
+    if (
+      !originals.has(node) ||
+      (last !== undefined && last !== node.nodeValue)
+    ) {
+      originals.set(node, node.nodeValue);
+    }
+
+    const source = originals.get(node);
+    const output = translateText(source);
+
+    outputs.set(node, output);
+
+    if (node.nodeValue !== output) {
+      node.nodeValue = output;
+    }
+  }
+
+  function translateTree(root) {
+    if (!root) return;
+
+    if (root.nodeType === Node.TEXT_NODE) {
+      translateNode(root);
+      return;
+    }
+
+    const walker = document.createTreeWalker(
+      root,
+      NodeFilter.SHOW_TEXT
+    );
+
+    let node;
+
+    while ((node = walker.nextNode())) {
+      translateNode(node);
+    }
+  }
+
+  function translateAttributes() {
+    const attrs = {
+      "help-button": "How to play",
+      "help-close": "Close guide"
+    };
+
+    for (const [id, text] of Object.entries(attrs)) {
+      const node = document.getElementById(id);
+
+      if (node) {
+        node.setAttribute(
+          "aria-label",
+          currentLanguage === "tr"
+            ? dictionary[text]
+            : text
+        );
+
+        if (id === "help-button") {
+          node.title =
+            currentLanguage === "tr"
+              ? dictionary[text]
+              : text;
+        }
+      }
+    }
+  }
+
+  function setGameLanguage(language) {
+    currentLanguage = language === "tr" ? "tr" : "en";
+    document.documentElement.lang = currentLanguage;
+
+    try {
+      localStorage.setItem(
+        STORAGE_KEY,
+        currentLanguage
+      );
+    } catch (_) {}
+
+    for (const code of ["tr", "en"]) {
+      const button = document.getElementById(
+        `lang-${code}`
+      );
+
+      if (!button) continue;
+
+      const selected = code === currentLanguage;
+
+      button.classList.toggle("active", selected);
+
+      button.setAttribute(
+        "aria-pressed",
+        String(selected)
+      );
+    }
+
+    translateTree(document.body);
+    translateAttributes();
+  }
+
+  const tr = document.getElementById("lang-tr");
+  const en = document.getElementById("lang-en");
+
+  if (tr) {
+    tr.addEventListener(
+      "click",
+      () => setGameLanguage("tr")
+    );
+  }
+
+  if (en) {
+    en.addEventListener(
+      "click",
+      () => setGameLanguage("en")
+    );
+  }
+
+  const observer = new MutationObserver(records => {
+    for (const record of records) {
+      if (record.type === "characterData") {
+        translateNode(record.target);
+      }
+
+      if (record.type === "childList") {
+        record.addedNodes.forEach(translateTree);
+      }
+    }
+  });
+
+  observer.observe(document.body, {
+    subtree: true,
+    childList: true,
+    characterData: true
+  });
+
+  setGameLanguage(currentLanguage);
+
+  window.setGameLanguage = setGameLanguage;
+
+  console.log("AYSSKY CARGO language selector ready.");
+})();

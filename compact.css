@@ -1,0 +1,1864 @@
+/* ===================================
+   AYSSKY CARGO - COMPACT DESIGN
+=================================== */
+
+:root {
+  --burgundy: #783e56;
+  --burgundy-dark: #603047;
+  --rose: #e9d4dc;
+  --rose-soft: #faf1f4;
+  --cream: #faf7f2;
+  --ink: #493b43;
+  --muted: #907f86;
+  --line: #ebdfe3;
+  --white: #ffffff;
+  --shadow: 0 9px 30px rgba(92, 50, 66, .075);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 11px;
+  padding: 11px 15px;
+  background: var(--burgundy);
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  transition: filter .15s, transform .15s;
+}
+
+button:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+button:active:not(:disabled) {
+  transform: scale(.98);
+}
+
+button:disabled {
+  opacity: .48;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #e1a3bf;
+  outline-offset: 2px;
+}
+
+/* MAIN CONTAINER */
+
+.app {
+  max-width: 1600px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 15px 20px 11px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+/* HEADER */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  min-height: 55px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.brand-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: var(--burgundy);
+  color: white;
+  font-size: 23px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--burgundy);
+  letter-spacing: -.7px;
+}
+
+.brand p {
+  margin: 5px 0 0;
+  font-size: 9px;
+  letter-spacing: 1.7px;
+  font-weight: 700;
+  color: #aa8a98;
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.language-switch {
+  display: flex;
+  padding: 3px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+}
+
+.language-switch button {
+  min-width: 31px;
+  padding: 7px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--burgundy);
+  font-size: 11px;
+}
+
+.language-switch button.active,
+.language-switch button.selected,
+.language-switch button[aria-pressed="true"] {
+  background: var(--burgundy);
+  color: white;
+}
+
+.level-pill {
+  padding: 9px 12px;
+  border-radius: 18px;
+  background: #f0e1e7;
+  color: var(--burgundy);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+/* TOP STATISTICS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 65px;
+  padding: 10px 13px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.stat-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 33px;
+  height: 33px;
+  border-radius: 10px;
+  background: var(--rose-soft);
+  font-size: 17px;
+}
+
+.stat-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.stat-label {
+  color: #a18a96;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+.stat-text strong {
+  color: var(--burgundy);
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+/* MAIN TWO-COLUMN LAYOUT */
+
+.game-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(310px, 3fr);
+  gap: 13px;
+  flex: 1;
+  min-height: 0;
+}
+
+.map-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  min-height: 480px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  box-shadow: var(--shadow);
+}
+
+/* MAP */
+
+#map {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 320px;
+  z-index: 1;
+}
+
+.map-top-card {
+  position: absolute;
+  z-index: 500;
+  top: 13px;
+  left: 13px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .97);
+  box-shadow: 0 3px 12px #0001;
+  pointer-events: none;
+}
+
+.map-top-icon {
+  font-size: 18px;
+}
+
+.map-top-card strong {
+  display: block;
+  font-size: 12px;
+  color: var(--burgundy);
+}
+
+.map-top-card small {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.map-legend {
+  position: absolute;
+  top: 14px;
+  right: 13px;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .96);
+  color: #79656f;
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.map-legend span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--burgundy);
+}
+
+.legend-dot.hub {
+  background: #ca8a31;
+}
+
+.legend-plane {
+  color: var(--burgundy);
+  font-style: normal;
+}
+
+#map-status {
+  position: absolute;
+  bottom: 116px;
+  left: 13px;
+  z-index: 500;
+  max-width: 75%;
+  padding: 7px 10px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, .93);
+  box-shadow: 0 2px 9px #0001;
+  color: var(--burgundy);
+  font-size: 10px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+/* QUICK FLIGHT BAR */
+
+.quick-flight-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  min-height: 98px;
+  padding: 12px 14px;
+  background: white;
+  border-top: 1px solid var(--line);
+}
+
+.quick-flight-left {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.mini-eyebrow {
+  color: #a98b97;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 1.25px;
+}
+
+.quick-flight-left strong {
+  overflow: hidden;
+  color: var(--burgundy);
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.quick-flight-left small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.flight-top-button {
+  min-width: 142px;
+  padding: 12px 14px;
+  white-space: nowrap;
+}
+
+/* RIGHT SIDEBAR */
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.orders-block {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 250px;
+  overflow: hidden;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  box-shadow: var(--shadow);
+}
+
+.orders-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 15px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.orders-header h2 {
+  margin: 0 0 5px;
+  color: var(--burgundy);
+  font-size: 15px;
+}
+
+.orders-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.orders-header-icon {
+  font-size: 20px;
+}
+
+.orders-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.orders-list {
+  display: grid;
+  gap: 9px;
+}
+
+/* COMPACT ORDER CARDS */
+
+.order-card {
+  display: grid;
+  gap: 7px;
+  padding: 11px 12px;
+  background: #fffafc;
+  border: 1px solid #eddee5;
+  border-radius: 12px;
+}
+
+.order-card.completed {
+  background: #f1f8f0;
+  border-color: #cfe2cd;
+}
+
+.order-route-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.order-route-line strong {
+  color: var(--burgundy);
+  font-size: 12px;
+}
+
+.order-code {
+  padding: 4px 6px;
+  border-radius: 8px;
+  background: #f0e1e7;
+  color: #885268;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.order-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.order-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.order-box {
+  display: grid;
+  gap: 4px;
+  padding: 6px 4px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.order-box span {
+  color: #a18e97;
+  font-size: 9px;
+}
+
+.order-box strong {
+  color: var(--burgundy);
+  font-size: 12px;
+}
+
+.order-extra {
+  display: none;
+  gap: 6px;
+  padding: 8px;
+  background: white;
+  border-radius: 8px;
+}
+
+.order-extra-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 10px;
+}
+
+.order-extra-row strong {
+  color: var(--burgundy);
+}
+
+.order-card > button {
+  padding: 9px;
+  font-size: 11px;
+}
+
+.order-status {
+  margin: 0;
+  color: #4c8457;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* COLLAPSIBLE DRAWERS */
+
+.tools-drawer,
+.route-drawer {
+  flex-shrink: 0;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.tools-drawer summary,
+.route-drawer summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px;
+  cursor: pointer;
+  list-style: none;
+  color: var(--burgundy);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.tools-drawer summary::-webkit-details-marker,
+.route-drawer summary::-webkit-details-marker {
+  display: none;
+}
+
+.tools-drawer summary::after,
+.route-drawer summary::after {
+  content: "⌄";
+  margin-left: auto;
+  color: #a48492;
+  font-size: 17px;
+}
+
+.tools-drawer[open] summary::after,
+.route-drawer[open] summary::after {
+  content: "⌃";
+}
+
+.summary-note {
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 500;
+}
+
+.tools-body {
+  display: grid;
+  gap: 10px;
+  max-height: 40vh;
+  overflow-y: auto;
+  padding: 11px;
+  border-top: 1px solid var(--line);
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.left-section {
+  min-width: 0;
+  padding: 10px;
+  background: #fff9fb;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+}
+
+.tiny-label {
+  color: #a38d98;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .7px;
+}
+
+.current-airport-box {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 7px 0 10px;
+}
+
+.current-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #be748e;
+}
+
+.current-airport-box strong,
+.aircraft-box strong {
+  color: var(--burgundy);
+  font-size: 12px;
+}
+
+.aircraft-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.aircraft-box-icon {
+  color: var(--burgundy);
+  font-size: 19px;
+}
+
+.aircraft-box > div:last-child {
+  display: grid;
+  gap: 2px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.section-head h3 {
+  margin: 0;
+  color: var(--burgundy);
+  font-size: 11px;
+}
+
+.hub-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.hub-chip,
+.small-badge {
+  display: inline-flex;
+  padding: 5px 7px;
+  border-radius: 9px;
+  background: #f1e2e8;
+  color: var(--burgundy);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.bar {
+  width: 100%;
+  height: 8px;
+  overflow: hidden;
+  background: #e9dce2;
+  border-radius: 8px;
+}
+
+.bar > div {
+  width: 0;
+  height: 100%;
+  background: var(--burgundy);
+  transition: width .25s;
+}
+
+.cargo-list {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+.cargo-item {
+  padding: 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.info-box {
+  margin-bottom: 7px;
+  padding: 8px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.wide {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.secondary-button {
+  background: #e9d7df;
+  color: var(--burgundy);
+}
+
+.outline-button {
+  background: white;
+  color: var(--burgundy);
+  border: 1px solid #d7b8c4;
+}
+
+.help-text {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+/* FLIGHT DETAILS */
+
+.route-badge {
+  padding: 5px 8px;
+  background: #f0e0e5;
+  color: var(--burgundy);
+  border-radius: 8px;
+  font-size: 9px;
+}
+
+.route-badge.ready {
+  background: #dff3e4;
+  color: #417a50;
+}
+
+.route-badge.blocked {
+  background: #f2e0e5;
+  color: #8c4962;
+}
+
+.route-card {
+  padding: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.route-top-line {
+  margin-bottom: 9px;
+  color: var(--burgundy);
+  font-size: 12px;
+}
+
+.route-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 5px;
+}
+
+.route-metric {
+  display: grid;
+  gap: 6px;
+  padding: 8px 3px;
+  background: #fbf4f7;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.route-metric span {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.route-metric strong {
+  color: var(--burgundy);
+  font-size: 10px;
+}
+
+.flight-warning {
+  margin: 10px 0 1px;
+  color: #8f6271;
+  font-size: 10px;
+}
+
+.flight-warning.ready {
+  color: #4f885a;
+}
+
+/* NOTIFICATIONS / FOOTER */
+
+#message-box {
+  min-height: 36px;
+  padding: 10px 14px;
+  background: #f4e7ec;
+  border-radius: 11px;
+  color: var(--burgundy);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+footer {
+  padding: 1px 0 3px;
+  color: #ab96a0;
+  font-size: 9px;
+  letter-spacing: .2px;
+  text-align: center;
+}
+
+/* MODALS */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  background: rgba(48, 28, 39, .54);
+  backdrop-filter: blur(4px);
+}
+
+.dialog {
+  width: min(610px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 25px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 22px 70px #1d101638;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+  color: #ba869b;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1.8px;
+}
+
+.dialog h2 {
+  margin: 0 0 8px;
+  color: var(--burgundy);
+  font-size: 25px;
+}
+
+.intro-subtitle,
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 17px 0;
+}
+
+.intro-card {
+  padding: 12px;
+  background: #fef9fb;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.intro-card strong {
+  color: var(--burgundy);
+  font-size: 12px;
+}
+
+.intro-card p {
+  margin: 6px 0 0;
+  color: #82737b;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.intro-rules {
+  padding-left: 20px;
+  color: #776771;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.intro-actions button {
+  flex: 1;
+  min-width: 130px;
+}
+
+.quiz-dialog {
+  width: min(530px, 100%);
+}
+
+.question {
+  color: var(--burgundy);
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 9px;
+  margin: 16px 0;
+}
+
+.quiz-option {
+  background: #fff9fb;
+  border: 1px solid #ecdce3;
+  color: var(--ink);
+  font-size: 12px;
+  text-align: left;
+}
+
+.quiz-option:hover:not(:disabled) {
+  background: #f2e2e9;
+}
+
+#quiz-feedback {
+  min-height: 16px;
+  color: var(--burgundy);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* DESKTOP */
+
+@media (min-width: 1100px) {
+  html,
+  body {
+    height: 100%;
+  }
+
+  .app {
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .game-layout {
+    min-height: 0;
+  }
+
+  .map-area {
+    min-height: 0;
+  }
+
+  .right-panel {
+    overflow: hidden;
+  }
+
+  .tools-drawer[open] {
+    max-height: 55%;
+    overflow: auto;
+  }
+
+  .orders-block {
+    min-height: 120px;
+  }
+}
+
+/* TABLETS */
+
+@media (max-width: 1099px) {
+  .game-layout {
+    grid-template-columns:
+      minmax(0, 1.6fr) minmax(290px, 1fr);
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .map-area {
+    min-height: 590px;
+  }
+}
+
+/* PHONES */
+
+@media (max-width: 760px) {
+  .app {
+    padding: 11px;
+    gap: 9px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .top-actions {
+    width: 100%;
+    gap: 6px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .stat-card {
+    min-height: 57px;
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .stat-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 14px;
+  }
+
+  .stat-text strong {
+    font-size: 14px;
+  }
+
+  .stat-label {
+    font-size: 8px;
+  }
+
+  .game-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .map-area {
+    height: 55vh;
+    min-height: 390px;
+  }
+
+  .right-panel {
+    min-height: 300px;
+  }
+
+  .orders-block {
+    min-height: 280px;
+    max-height: 390px;
+  }
+
+  .map-legend {
+    top: 70px;
+    right: 8px;
+  }
+
+  .quick-flight-bar {
+    padding: 10px;
+  }
+
+  .flight-top-button {
+    min-width: 115px;
+    padding: 10px;
+  }
+
+  .quick-flight-left strong {
+    font-size: 11px;
+  }
+
+  .quick-flight-left small {
+    font-size: 9px;
+  }
+
+  .dialog {
+    padding: 18px;
+  }
+
+  .intro-grid {
+    gap: 7px;
+  }
+
+  .intro-card {
+    padding: 9px;
+  }
+}
+
+@media (max-width: 430px) {
+  .high-score-stat {
+    display: none;
+  }
+
+  .stats {
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr));
+  }
+
+  .stat-card {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 7px 2px;
+  }
+
+  .stat-icon {
+    width: auto;
+    height: auto;
+    background: none;
+  }
+
+  .stat-text {
+    text-align: center;
+    gap: 3px;
+  }
+
+  .stat-text strong {
+    font-size: 12px;
+  }
+
+  .brand h1 {
+    font-size: 18px;
+  }
+
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-legend {
+    font-size: 9px;
+  }
+}
+
+
+
+/* ==========================================
+   AYSSKY CARGO - THREE COLUMN LAYOUT
+   LEFT: FLIGHT DETAILS + AIRCRAFT
+   CENTER: MAP
+   RIGHT: ORDERS
+========================================== */
+
+/* Desktop layout */
+
+@media (min-width: 1100px) {
+
+  .game-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(220px, 245px)
+      minmax(0, 1fr)
+      minmax(290px, 315px);
+    gap: 12px;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+
+  .map-area {
+    min-width: 0;
+    min-height: 0;
+  }
+
+  .right-panel {
+    min-width: 0;
+    min-height: 0;
+  }
+
+}
+
+/* Left side panels */
+
+.left-flight-card,
+.left-aircraft-card {
+  background: #ffffff;
+  border: 1px solid #ebdfe3;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(92, 50, 66, .06);
+  padding: 13px;
+}
+
+.left-flight-card {
+  flex-shrink: 0;
+}
+
+.left-aircraft-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+/* Compact headings */
+
+.compact-panel-heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+}
+
+.compact-heading-icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: #f5e9ee;
+  border-radius: 10px;
+  font-size: 17px;
+}
+
+.compact-panel-heading h2 {
+  margin: 0;
+  color: #783e56;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.compact-panel-heading p {
+  margin: 3px 0 0;
+  color: #a08a95;
+  font-size: 9px;
+}
+
+/* Flight detail metrics */
+
+.left-flight-card .route-top-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.left-flight-card .route-top-line strong {
+  min-width: 0;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.left-flight-card .route-metrics {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.left-flight-card .route-metric {
+  padding: 9px 5px;
+}
+
+.left-flight-card .route-metric strong {
+  font-size: 12px;
+}
+
+.left-flight-card .flight-warning {
+  line-height: 1.5;
+}
+
+/* Aircraft summary */
+
+.aircraft-summary {
+  display: grid;
+  gap: 7px;
+  padding: 10px;
+  margin-bottom: 5px;
+  background: #faf1f4;
+  border-radius: 10px;
+}
+
+.aircraft-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.aircraft-summary-row span {
+  color: #907f86;
+  font-size: 10px;
+}
+
+.aircraft-summary-row strong {
+  color: #783e56;
+  font-size: 10px;
+  text-align: right;
+}
+
+/* Aircraft sections */
+
+.compact-aircraft-section {
+  padding: 11px 1px;
+  border-bottom: 1px solid #f0e5e9;
+}
+
+.compact-aircraft-section:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.compact-aircraft-section .section-head {
+  margin-bottom: 8px;
+}
+
+.compact-aircraft-section .section-head h3 {
+  font-size: 10px;
+}
+
+.compact-aircraft-section .cargo-list {
+  max-height: 100px;
+  overflow-y: auto;
+  font-size: 10px;
+}
+
+.compact-aircraft-section .info-box {
+  padding: 7px;
+  font-size: 9px;
+}
+
+.compact-aircraft-section .wide {
+  margin-top: 5px;
+  padding: 9px;
+  font-size: 10px;
+}
+
+/* Fuel buttons */
+
+.compact-button-group {
+  display: grid;
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.compact-button-group button {
+  min-width: 0;
+  padding: 9px 5px;
+  font-size: 9px;
+}
+
+/* Orders remain on the right */
+
+.right-panel .orders-block {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Tablet */
+
+@media (min-width: 761px) and (max-width: 1099px) {
+
+  .game-layout {
+    display: grid;
+    grid-template-columns:
+      minmax(220px, 1fr)
+      minmax(0, 2fr);
+    gap: 12px;
+  }
+
+  .left-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .right-panel {
+    grid-column: 1 / -1;
+  }
+
+  .right-panel .orders-block {
+    min-height: 270px;
+    max-height: 400px;
+  }
+
+}
+
+/* Mobile */
+
+@media (max-width: 760px) {
+
+  .game-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .map-area {
+    order: 1;
+  }
+
+  .right-panel {
+    order: 2;
+  }
+
+  .left-panel {
+    order: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .left-flight-card,
+  .left-aircraft-card {
+    padding: 12px;
+  }
+
+  .left-flight-card .route-metrics {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+}
+
+
+
+/* HELP BUTTON NEXT TO LEVEL */
+
+.level-help-group {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.help-circle {
+  width: 29px;
+  height: 29px;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f0e1e7;
+  border: 1px solid #d9b9c7;
+  color: #783e56;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.help-circle:hover {
+  background: #783e56;
+  color: #fff;
+}
+
+/* HELP WINDOW */
+
+.help-dialog {
+  width: min(570px, 100%);
+  padding: 23px;
+}
+
+.help-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.help-heading h2 {
+  font-size: 23px;
+}
+
+.help-intro {
+  margin: 4px 0 0;
+  color: #907f86;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.help-close {
+  flex-shrink: 0;
+  background: #f5e9ee;
+  color: #783e56;
+  padding: 8px 11px;
+}
+
+.help-steps {
+  display: grid;
+  gap: 9px;
+  margin: 19px 0 13px;
+}
+
+.help-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 10px;
+  background: #fff8fa;
+  border: 1px solid #eddee5;
+  border-radius: 11px;
+}
+
+.help-number {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  background: #783e56;
+  color: #fff;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.help-step strong {
+  color: #783e56;
+  font-size: 12px;
+}
+
+.help-step p {
+  margin: 4px 0 0;
+  color: #82737b;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.help-rules-box {
+  padding: 12px;
+  background: #faf1f4;
+  border-radius: 11px;
+}
+
+.help-rules-box h3,
+.help-levels h3 {
+  margin: 0 0 9px;
+  color: #783e56;
+  font-size: 12px;
+}
+
+.help-rules-box p {
+  margin: 5px 0;
+  color: #776771;
+  font-size: 10px;
+}
+
+.help-levels {
+  margin-top: 14px;
+}
+
+.help-levels > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee1e6;
+}
+
+.help-levels strong {
+  color: #783e56;
+  font-size: 10px;
+}
+
+.help-levels span {
+  color: #907f86;
+  font-size: 10px;
+  text-align: right;
+}
+
+.help-done {
+  width: 100%;
+  margin-top: 18px;
+}
+
+@media (max-width: 500px) {
+  .help-dialog {
+    padding: 16px;
+  }
+
+  .help-levels > div {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .help-levels span {
+    text-align: left;
+  }
+}
+
+
+/* ===================================
+   AYSSKY - NEW MAP MARKERS
+=================================== */
+
+.ays-map-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.ays-airport-marker,
+.ays-hub-marker,
+.ays-player-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: transform 0.15s ease;
+}
+
+/* Ordinary airport: burgundy */
+
+.ays-airport-marker {
+  width: 29px;
+  height: 29px;
+  background: #874760;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  box-shadow:
+    0 3px 10px rgba(83, 38, 58, 0.3);
+}
+
+.ays-airport-marker svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Cargo hub: gold */
+
+.ays-hub-marker {
+  width: 38px;
+  height: 38px;
+  background: #f6e7cc;
+  border: 3px solid #c28c37;
+  color: #a66d1e;
+  box-shadow:
+    0 0 0 4px rgba(194, 140, 55, 0.18),
+    0 4px 12px rgba(113, 77, 21, 0.22);
+}
+
+.ays-hub-marker svg {
+  width: 21px;
+  height: 21px;
+}
+
+/* Player aircraft */
+
+.ays-player-marker {
+  width: 48px;
+  height: 48px;
+  background: #fffafc;
+  border: 3px solid #874760;
+  color: #874760;
+  box-shadow:
+    0 0 0 5px rgba(135, 71, 96, 0.16),
+    0 5px 15px rgba(83, 38, 58, 0.28);
+}
+
+.ays-player-marker svg {
+  width: 29px;
+  height: 29px;
+}
+
+/* Hover effects */
+
+.leaflet-marker-icon:hover .ays-airport-marker,
+.leaflet-marker-icon:hover .ays-hub-marker {
+  transform: scale(1.12);
+}
+
+/* Map marker tooltip */
+
+.leaflet-tooltip {
+  border-radius: 9px;
+  border: 1px solid #ead9e0;
+  color: #783e56;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
+}
+
+/* ===================================
+   MATCHING MAP LEGEND
+=================================== */
+
+.map-legend {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 270px;
+}
+
+.map-legend .legend-dot {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  background: #874760;
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #874760;
+}
+
+.map-legend .legend-dot.hub {
+  background: #f6e7cc;
+  border: 3px solid #c28c37;
+  box-shadow: none;
+}
+
+.map-legend .legend-plane {
+  font-size: 17px;
+  font-style: normal;
+  color: #874760;
+}
+
+/* Mobile legend should not overlap map title */
+
+@media (max-width: 760px) {
+  .map-legend {
+    top: 70px;
+    right: 8px;
+    padding: 7px 9px;
+    max-width: 225px;
+    font-size: 9px;
+  }
+}
+
+
+
+
+/* ==================================
+   AYSSKY CARGO - CENTERED POPUPS
+================================== */
+
+#game-result-overlay[hidden],
+#pause-overlay[hidden] {
+  display: none !important;
+}
+
+#game-result-overlay,
+#pause-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 20px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: rgba(36, 20, 31, 0.7) !important;
+  backdrop-filter: blur(6px);
+  z-index: 99999 !important;
+  box-sizing: border-box;
+}
+
+#game-result-overlay .game-extra-card,
+#pause-overlay .game-extra-card {
+  width: min(420px, 100%) !important;
+  max-height: 88dvh;
+  overflow-y: auto;
+  margin: auto !important;
+  padding: 28px 24px !important;
+
+  background: #fffafc !important;
+  border: 1px solid #ead6df !important;
+  border-radius: 22px !important;
+  box-shadow: 0 20px 65px rgba(30, 10, 25, 0.35);
+  text-align: center !important;
+}
+
+.game-extra-icon {
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  background: #f4e5eb;
+  font-size: 32px;
+}
+
+.game-extra-card h2 {
+  margin: 0 0 10px;
+  color: #783e56;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.game-extra-card p {
+  color: #8b7682;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.game-result-stats {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.game-result-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 13px;
+  border-radius: 12px;
+  background: #f8edf2;
+}
+
+.game-result-stats span {
+  color: #8d7582;
+  font-size: 10px;
+}
+
+.game-result-stats strong {
+  color: #783e56;
+  font-size: 19px;
+}
+
+#game-result-action,
+#pause-resume {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 12px;
+  background: #783e56;
+  color: white;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+#pause-button {
+  padding: 8px 12px;
+  border: 1px solid #d8b8c6;
+  border-radius: 10px;
+  background: #f0e1e7;
+  color: #783e56;
+  font-weight: 700;
+  cursor: pointer;
+}

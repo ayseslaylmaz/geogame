@@ -1,11 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AYSSKY CARGO</title>
 
   <link
@@ -16,238 +14,248 @@
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="compact.css">
 </head>
+
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <!-- HEADER -->
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-badge">✈</div>
+  <!-- HEADER -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-badge">✈</div>
+      <div>
+        <h1>AYSSKY CARGO</h1>
+        <p>GEOGRAPHY · DELIVERY · STRATEGY</p>
+      </div>
+    </div>
 
-        <div>
-          <h1>AYSSKY CARGO</h1>
-          <p>GEOGRAPHY · DELIVERY · STRATEGY</p>
-        </div>
+    <div class="top-actions">
+      <div class="language-switch" aria-label="Language">
+        <button id="lang-tr" type="button">TR</button>
+        <button id="lang-en" type="button">EN</button>
       </div>
 
-      <div class="top-actions">
+      
+<div class="level-help-group">
+  <span id="level-label" class="level-pill">
+    Level 1 · Türkiye
+  </span>
 
-<div class="language-switch" aria-label="Language">
-  <button id="lang-tr" type="button">TR</button>
-  <button id="lang-en" type="button">EN</button>
+  <button
+    id="help-button"
+    class="help-circle"
+    type="button"
+    aria-label="How to play"
+    title="How to play"
+  >?</button>
 </div>
 
-        <span id="level-label" class="level-pill">
-          Level 1 · Türkiye
-        </span>
 
-        <button id="start-button" type="button">
-          Start Game
-        </button>
-
-        <button
-          id="next-button"
-          type="button"
-          hidden
-        >
-          Next Level →
-        </button>
-      </div>
-    </header>
-
-    <!-- STATS -->
-    <section class="stats" aria-label="Game statistics">
-
-      <div class="stat-card">
-        <div class="stat-icon">⏱</div>
-        <div class="stat-text">
-          <span class="stat-label">TIME</span>
-          <strong id="timer">02:00</strong>
-          <small>remaining</small>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">📦</div>
-        <div class="stat-text">
-          <span class="stat-label">ORDERS</span>
-          <strong id="progress">0 / 4</strong>
-          <small>completed</small>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">⛽</div>
-        <div class="stat-text">
-          <span class="stat-label">FUEL</span>
-          <strong id="fuel">18 / 25</strong>
-          <small>available</small>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🪙</div>
-        <div class="stat-text">
-          <span class="stat-label">COINS</span>
-          <strong id="coins">20</strong>
-          <small>balance</small>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">⭐</div>
-        <div class="stat-text">
-          <span class="stat-label">SCORE</span>
-          <strong id="score">0</strong>
-          <small>points</small>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon">🏆</div>
-        <div class="stat-text">
-          <span class="stat-label">HIGH SCORE</span>
-          <strong id="high-score">0</strong>
-          <small>best run</small>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- QUICK FLIGHT BAR -->
-    <section class="quick-flight-bar">
-      <div class="quick-flight-left">
-        <span class="mini-eyebrow">QUICK FLIGHT</span>
-        <strong id="quick-route-summary">
-          No destination selected
-        </strong>
-        <small id="quick-route-detail">
-          Choose an airport on the map to preview the flight.
-        </small>
-      </div>
-
-      <button
-        id="fly-button"
-        class="flight-top-button"
-        type="button"
-        disabled
-      >
-        Start Flight ✈
+      <button id="start-button" type="button">
+        Start Game
       </button>
-    </section>
 
-    <!-- LAYOUT -->
-    <main class="game-layout">
+      <button id="next-button" type="button" hidden>
+        Next Level →
+      </button>
+    </div>
+  </header>
 
-      <!-- LEFT PANEL -->
-      <aside class="panel left-panel">
+  <!-- GAME STATISTICS -->
+  <section class="stats" aria-label="Game statistics">
 
-        <div class="panel-title">
-          <div class="panel-icon">✈</div>
-          <div>
-            <h2>Aircraft Control</h2>
-            <p>aircraft · cargo · fuel</p>
-          </div>
+    <div class="stat-card">
+      <div class="stat-icon">⏱</div>
+      <div class="stat-text">
+        <span class="stat-label">TIME</span>
+        <strong id="timer">02:00</strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">📦</div>
+      <div class="stat-text">
+        <span class="stat-label">ORDERS</span>
+        <strong id="progress">0 / 4</strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">⛽</div>
+      <div class="stat-text">
+        <span class="stat-label">FUEL</span>
+        <strong id="fuel">18 / 25</strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">🪙</div>
+      <div class="stat-text">
+        <span class="stat-label">COINS</span>
+        <strong id="coins">20</strong>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon">⭐</div>
+      <div class="stat-text">
+        <span class="stat-label">SCORE</span>
+        <strong id="score">0</strong>
+      </div>
+    </div>
+
+    <div class="stat-card high-score-stat">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-text">
+        <span class="stat-label">RECORD</span>
+        <strong id="high-score">0</strong>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- MAIN GAME AREA -->
+  
+
+    
+<main class="game-layout">
+
+  <!-- SOL PANEL -->
+  <aside class="panel left-panel">
+
+    <!-- FLIGHT DETAILS - HER ZAMAN GORUNUR -->
+    <section class="left-flight-card">
+
+      <div class="compact-panel-heading">
+        <span class="compact-heading-icon">🧭</span>
+        <div>
+          <h2>Flight Details</h2>
+          <p>Selected route</p>
+        </div>
+      </div>
+
+      <div class="route-top-line">
+        <strong id="planner-route-title">
+          No route selected
+        </strong>
+        <span id="planner-route-badge"
+              class="route-badge">
+          WAITING
+        </span>
+      </div>
+
+      <div class="route-metrics">
+
+        <div class="route-metric">
+          <span>Distance</span>
+          <strong id="planner-distance">-</strong>
         </div>
 
-        <section class="left-section highlight-section">
-          <span class="tiny-label">CURRENT AIRPORT</span>
+        <div class="route-metric">
+          <span>Time</span>
+          <strong id="planner-time">-</strong>
+        </div>
 
-          <div class="current-airport-box">
-            <span class="current-dot"></span>
-            <strong id="current-location">Ankara</strong>
-          </div>
+        <div class="route-metric">
+          <span>Fuel</span>
+          <strong id="planner-fuel">-</strong>
+        </div>
 
-          <div class="aircraft-box">
-            <div class="aircraft-box-icon">✈</div>
+        <div class="route-metric">
+          <span>Fee</span>
+          <strong id="planner-coins">-</strong>
+        </div>
 
-            <div>
-              <span class="tiny-label">AIRCRAFT</span>
-              <strong id="aircraft-name">Mini Cargo</strong>
-            </div>
-          </div>
-        </section>
+      </div>
 
-        <section class="left-section">
-          <div class="section-head">
-            <h3>Active Cargo Hubs</h3>
-            <span>🏢</span>
-          </div>
+      <p id="flight-warning" class="flight-warning">
+        Select a destination airport.
+      </p>
 
-          <div id="hub-list" class="hub-list"></div>
-        </section>
+    </section>
 
-        <section class="left-section">
-          <div class="section-head">
-            <h3>Cargo Capacity</h3>
-            <span id="cargo-count" class="small-badge">0 / 5</span>
-          </div>
+    <!-- AIRCRAFT - HER ZAMAN GORUNUR -->
+    <section class="left-aircraft-card">
 
-          <div class="bar">
-            <div id="capacity-fill"></div>
-          </div>
+      <div class="compact-panel-heading">
+        <span class="compact-heading-icon">✈</span>
+        <div>
+          <h2>Aircraft</h2>
+          <p>Cargo &amp; fuel control</p>
+        </div>
+      </div>
 
-          <p class="help-text">
-            Load packages from active cargo hubs.
-          </p>
-        </section>
+      <div class="aircraft-summary">
 
-        <section class="left-section">
-          <div class="section-head">
-            <h3>Loaded Packages</h3>
-            <span>📦</span>
-          </div>
+        <div class="aircraft-summary-row">
+          <span>📍 Location</span>
+          <strong id="current-location">Ankara</strong>
+        </div>
 
-          <div id="cargo-list" class="cargo-list">
-            No cargo loaded.
-          </div>
-        </section>
+        <div class="aircraft-summary-row">
+          <span>✈ Plane</span>
+          <strong id="aircraft-name">Mini Cargo</strong>
+        </div>
 
-        <section class="left-section">
-          <div class="section-head">
-            <h3>Aircraft Upgrades</h3>
-            <span>⚙️</span>
-          </div>
+      </div>
 
-          <div id="upgrade-description" class="info-box">
-            Next: Cargo Plus · 10 packages
-          </div>
+      <div class="compact-aircraft-section">
+        <div class="section-head">
+          <h3>Active Cargo Hubs</h3>
+        </div>
+        <div id="hub-list" class="hub-list"></div>
+      </div>
 
-          <button
-            id="upgrade-button"
-            class="wide secondary-button"
-            type="button"
-            disabled
-          >
-            Upgrade Aircraft
-          </button>
+      <div class="compact-aircraft-section">
 
-          <p class="help-text">
-            Upgrade is available only at Ankara.
-          </p>
-        </section>
+        <div class="section-head">
+          <h3>Cargo Capacity</h3>
+          <span id="cargo-count"
+                class="small-badge">
+            0 / 5
+          </span>
+        </div>
 
-        <section class="left-section">
-          <div class="section-head">
-            <h3>Fuel Station</h3>
-            <span>⛽</span>
-          </div>
+        <div class="bar">
+          <div id="capacity-fill"></div>
+        </div>
+
+      </div>
+
+      <div class="compact-aircraft-section">
+
+        <div class="section-head">
+          <h3>Loaded Cargo</h3>
+          <span>📦</span>
+        </div>
+
+        <div id="cargo-list" class="cargo-list">
+          No cargo loaded.
+        </div>
+
+      </div>
+
+      <div class="compact-aircraft-section">
+
+        <div class="section-head">
+          <h3>Fuel Station</h3>
+          <span>⛽</span>
+        </div>
+
+        <div class="compact-button-group">
 
           <button
             id="refuel-button"
-            class="wide secondary-button"
             type="button"
+            class="secondary-button"
             disabled
           >
             Buy 5 Fuel
@@ -255,236 +263,394 @@
 
           <button
             id="fill-button"
-            class="wide outline-button"
             type="button"
+            class="outline-button"
             disabled
           >
             Fill Tank
           </button>
 
-          <p class="help-text">
-            Fuel costs more outside Ankara.
-          </p>
-        </section>
-
-      </aside>
-
-      <!-- MAP -->
-      <section class="map-area">
-
-        <div class="map-top-card">
-          <span class="map-top-icon">🌍</span>
-          <div>
-            <strong>Operations Map</strong>
-            <small>Select a destination airport</small>
-          </div>
         </div>
 
-        <div class="map-legend">
-          <span><i class="legend-dot hub"></i> Hub</span>
-          <span><i class="legend-dot airport"></i> Airport</span>
-          <span><i class="legend-plane">✈</i> Aircraft</span>
-        </div>
-
-        <div id="map"></div>
-
-        <div id="map-status" role="status">
-          Press Start Game to begin.
-        </div>
-
-      </section>
-
-      <!-- RIGHT PANEL -->
-      <aside class="panel right-panel">
-
-        <!-- fixed top -->
-        <div class="route-card">
-          <div class="panel-title route-title-block">
-            <div class="panel-icon">🧭</div>
-            <div>
-              <h2>Selected Flight</h2>
-              <p>route preview</p>
-            </div>
-          </div>
-
-          <div class="route-top-line">
-            <strong id="planner-route-title">
-              No route selected
-            </strong>
-
-            <span id="planner-route-badge" class="route-badge">
-              WAITING
-            </span>
-          </div>
-
-          <div class="route-metrics">
-
-            <div class="route-metric">
-              <span>Distance</span>
-              <strong id="planner-distance">-</strong>
-            </div>
-
-            <div class="route-metric">
-              <span>Time</span>
-              <strong id="planner-time">-</strong>
-            </div>
-
-            <div class="route-metric">
-              <span>Fuel</span>
-              <strong id="planner-fuel">-</strong>
-            </div>
-
-            <div class="route-metric">
-              <span>Fee</span>
-              <strong id="planner-coins">-</strong>
-            </div>
-
-          </div>
-
-          <p id="flight-warning" class="flight-warning">
-            Select a destination to enable flight.
-          </p>
-        </div>
-
-        <!-- scrollable order list -->
-        <div class="orders-block">
-          <div class="orders-header">
-            <div>
-              <h2>Orders</h2>
-              <p>pickup and delivery tasks</p>
-            </div>
-
-            <span class="orders-header-icon">📦</span>
-          </div>
-
-          <div class="orders-scroll">
-            <div id="orders-list" class="orders-list"></div>
-          </div>
-        </div>
-
-      </aside>
-
-    </main>
-
-    <div
-      id="message-box"
-      role="status"
-      aria-live="polite"
-    >
-      Welcome to AYSSKY CARGO.
-    </div>
-
-    <footer>
-      AYSSKY CARGO · Leaflet · OpenStreetMap · Haversine Distance
-    </footer>
-
-  </div>
-
-  <!-- INTRO / HOW TO PLAY -->
-  <div id="intro-overlay" class="overlay intro-overlay">
-    <div class="dialog intro-dialog">
-      <p class="eyebrow">WELCOME</p>
-      <h2>AYSSKY CARGO</h2>
-      <p class="intro-subtitle">
-        A geography and logistics game.
-      </p>
-
-      <div class="intro-grid">
-        <div class="intro-card">
-          <strong>1. Load cargo</strong>
-          <p>
-            Travel to active cargo hubs and load packages.
-            Level 1 starts from Ankara.
-          </p>
-        </div>
-
-        <div class="intro-card">
-          <strong>2. Plan your route</strong>
-          <p>
-            Choose your destination, manage fuel,
-            coins and time carefully.
-          </p>
-        </div>
-
-        <div class="intro-card">
-          <strong>3. Deliver correctly</strong>
-          <p>
-            When you arrive, answer the geography
-            question correctly to complete the delivery.
-          </p>
-        </div>
-
-        <div class="intro-card">
-          <strong>4. Earn and upgrade</strong>
-          <p>
-            Gain coins from deliveries, upgrade your
-            aircraft and unlock the next levels.
-          </p>
-        </div>
       </div>
 
-      <ul class="intro-rules">
-        <li>Score comes only from completed orders.</li>
-        <li>Wrong answer = 5 seconds penalty.</li>
-        <li>Hint = 3 coins.</li>
-        <li>Level 2 adds İstanbul as a cargo hub.</li>
-        <li>Level 3 adds Dubai as a cargo hub.</li>
-      </ul>
+      <div class="compact-aircraft-section">
 
-      <div class="intro-actions">
-        <button id="intro-start-button" type="button">
-          Start Adventure
-        </button>
+        <div class="section-head">
+          <h3>Aircraft Upgrade</h3>
+          <span>⚙</span>
+        </div>
+
+        <div id="upgrade-description"
+             class="info-box">
+          Next: Cargo Plus
+        </div>
 
         <button
-          id="intro-close-button"
+          id="upgrade-button"
           type="button"
-          class="outline-button"
+          class="wide secondary-button"
+          disabled
         >
-          Close Guide
+          Upgrade Aircraft
         </button>
+
       </div>
+
+    </section>
+
+  </aside>
+
+  <!-- ORTA: BUYUK HARITA -->
+  <section class="map-area">
+
+    
+
+<div class="map-legend" aria-label="Map symbols">
+
+  <span>
+    <i class="legend-dot hub"></i>
+    Cargo Hub
+  </span>
+
+  <span>
+    <i class="legend-dot airport"></i>
+    Airport
+  </span>
+
+  <span>
+    <i class="legend-plane">✈</i>
+    Your Plane
+  </span>
+
+</div>
+
+
+    <div id="map"></div>
+
+    <div id="map-status" role="status">
+      Press Start Game to begin.
     </div>
-  </div>
 
-  <!-- QUIZ OVERLAY -->
-  <div id="quiz-overlay" class="overlay" hidden>
-    <div class="dialog quiz-dialog"
-         role="dialog"
-         aria-modal="true"
-         aria-labelledby="quiz-title">
+    <section class="quick-flight-bar">
 
-      <p class="eyebrow">DELIVERY CHECK</p>
-      <h2 id="quiz-title">Cargo Verification</h2>
+      <div class="quick-flight-left">
 
-      <p id="quiz-destination" class="muted"></p>
-      <p id="quiz-question" class="question"></p>
+        <span class="mini-eyebrow">
+          YOUR FLIGHT
+        </span>
 
-      <div id="quiz-options" class="quiz-options"></div>
+        <strong id="quick-route-summary">
+          No destination selected
+        </strong>
 
-      <p id="quiz-feedback" aria-live="polite"></p>
+        <small id="quick-route-detail">
+          Choose an airport to preview the flight.
+        </small>
+
+      </div>
 
       <button
-        id="quiz-hint"
+        id="fly-button"
         type="button"
-        class="secondary-button wide"
+        class="flight-top-button"
+        disabled
       >
-        Use Hint (3 Coins)
+        Start Flight ✈
       </button>
+
+    </section>
+
+  </section>
+
+  <!-- SAG: ORDERS -->
+  <aside class="panel right-panel">
+
+    <div class="orders-block">
+
+      <div class="orders-header">
+
+        <div>
+          <h2>📦 Orders</h2>
+          <p>Pickup and delivery tasks</p>
+        </div>
+
+        <span class="orders-header-icon">📍</span>
+
+      </div>
+
+      <div class="orders-scroll">
+        <div id="orders-list"
+             class="orders-list"></div>
+      </div>
+
     </div>
+
+  </aside>
+
+</main>
+
+
+  <!-- NOTIFICATIONS -->
+  <div
+    id="message-box"
+    role="status"
+    aria-live="polite"
+  >
+    Welcome to AYSSKY CARGO.
   </div>
 
-  <script
-    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""
-  ></script>
+  <footer>
+    AYSSKY CARGO · Leaflet · OpenStreetMap · Haversine Distance
+  </footer>
 
-  <script src="js/airports.js"></script>
-  <script src="js/routes.js"></script>
-  <script src="js/questions.js"></script>
-  <script src="js/map.js"></script>
-  <script src="js/game.js"></script>
-  <script src="js/language.js"></script> 
+</div>
+
+<!-- HOW TO PLAY -->
+<div
+  class="overlay intro-overlay"
+  id="intro-overlay"
+>
+  <div class="dialog intro-dialog">
+
+    <p class="eyebrow">WELCOME</p>
+    <h2>AYSSKY CARGO</h2>
+
+    <p class="intro-subtitle">
+      A geography and logistics game.
+    </p>
+
+    <div class="intro-grid">
+
+      <div class="intro-card">
+        <strong>1. Load cargo</strong>
+        <p>
+          Travel to active cargo hubs and load packages.
+          Level 1 starts from Ankara.
+        </p>
+      </div>
+
+      <div class="intro-card">
+        <strong>2. Plan your route</strong>
+        <p>
+          Choose your destination, manage fuel,
+          coins and time carefully.
+        </p>
+      </div>
+
+      <div class="intro-card">
+        <strong>3. Deliver correctly</strong>
+        <p>
+          When you arrive, answer the geography
+          question correctly to complete the delivery.
+        </p>
+      </div>
+
+      <div class="intro-card">
+        <strong>4. Earn and upgrade</strong>
+        <p>
+          Gain coins from deliveries, upgrade your
+          aircraft and unlock the next levels.
+        </p>
+      </div>
+
+    </div>
+
+    <ul class="intro-rules">
+      <li>Score comes only from completed orders.</li>
+      <li>Wrong answer = 5 seconds penalty.</li>
+      <li>Hint = 3 coins.</li>
+      <li>Level 2 adds İstanbul as a cargo hub.</li>
+      <li>Level 3 adds Dubai as a cargo hub.</li>
+    </ul>
+
+    <div class="intro-actions">
+
+      <button
+        id="intro-start-button"
+        type="button"
+      >
+        Start Adventure
+      </button>
+
+      <button
+        class="outline-button"
+        id="intro-close-button"
+        type="button"
+      >
+        Close Guide
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- DELIVERY QUIZ -->
+<div
+  class="overlay"
+  id="quiz-overlay"
+  hidden
+>
+  <div
+    class="dialog quiz-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="quiz-title"
+  >
+
+    <p class="eyebrow">DELIVERY CHECK</p>
+    <h2 id="quiz-title">Cargo Verification</h2>
+
+    <p class="muted" id="quiz-destination"></p>
+
+    <p class="question" id="quiz-question"></p>
+
+    <div id="quiz-options" class="quiz-options"></div>
+
+    <p
+      id="quiz-feedback"
+      aria-live="polite"
+    ></p>
+
+    <button
+      class="secondary-button wide"
+      id="quiz-hint"
+      type="button"
+    >
+      Use Hint (3 Coins)
+    </button>
+
+  </div>
+</div>
+
+
+<!-- GAME HELP WINDOW -->
+<div id="help-overlay" class="overlay" hidden>
+  <div
+    class="dialog help-dialog"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="help-title"
+  >
+    <div class="help-heading">
+      <div>
+        <p class="eyebrow">GAME GUIDE</p>
+        <h2 id="help-title">How to Play ✈</h2>
+        <p class="help-intro">
+          Become a cargo pilot and complete deliveries
+          by exploring the world!
+        </p>
+      </div>
+
+      <button
+        id="help-close"
+        class="help-close"
+        type="button"
+        aria-label="Close guide"
+      >✕</button>
+    </div>
+
+    <div class="help-steps">
+      <div class="help-step">
+        <span class="help-number">01</span>
+        <div>
+          <strong>Collect your cargo</strong>
+          <p>
+            Go to a cargo hub and press Load Packages.
+            Each order must fit completely in your plane.
+          </p>
+        </div>
+      </div>
+
+      <div class="help-step">
+        <span class="help-number">02</span>
+        <div>
+          <strong>Select an airport</strong>
+          <p>
+            Click an airport on the map. Check the
+            distance, flight time, fuel and coin cost.
+          </p>
+        </div>
+      </div>
+
+      <div class="help-step">
+        <span class="help-number">03</span>
+        <div>
+          <strong>Fly and deliver</strong>
+          <p>
+            Press Start Flight. At the destination,
+            answer the geography question correctly
+            to complete your delivery.
+          </p>
+        </div>
+      </div>
+
+      <div class="help-step">
+        <span class="help-number">04</span>
+        <div>
+          <strong>Earn coins and upgrade</strong>
+          <p>
+            Deliver packages to earn coins.
+            Buy fuel when needed and upgrade
+            your aircraft at Ankara.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="help-rules-box">
+      <h3>⭐ Important Rules</h3>
+      <p>✓ Completed order: +20 points</p>
+      <p>✓ Completed level: +25 bonus points</p>
+      <p>✕ Wrong answer: −5 seconds</p>
+      <p>💡 Hint: 3 coins</p>
+      <p>⛽ Flights require enough fuel, coins and time</p>
+    </div>
+
+    <div class="help-levels">
+      <h3>🌍 Game Levels</h3>
+
+      <div><strong>Level 1 · Türkiye</strong>
+        <span>4 orders · 120 sec · Ankara hub</span>
+      </div>
+
+      <div><strong>Level 2 · Europe</strong>
+        <span>5 orders · 210 sec · Ankara + İstanbul</span>
+      </div>
+
+      <div><strong>Level 3 · World</strong>
+        <span>5 orders · 330 sec · Ankara + İstanbul + Dubai</span>
+      </div>
+    </div>
+
+    <button
+      id="help-done"
+      class="help-done"
+      type="button"
+    >
+      Got it! ✈
+    </button>
+  </div>
+</div>
+
+
+
+
+<!-- JAVASCRIPT FILES -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+  crossorigin=""
+></script>
+
+<script src="js/airports.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/questions.js"></script>
+<script src="js/map.js"></script>
+<script src="js/game.js"></script>
+<script src="js/language.js"></script>
+<script src="js/help.js"></script>
+
 </body>
 </html>
