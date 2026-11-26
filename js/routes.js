@@ -1,46 +1,43 @@
-
-/* SKY CARGO - ROUTE CALCULATIONS */
-
-// Haversine distance calculation
 function calculateDistance(lat1, lon1, lat2, lon2) {
+  const toRad = (deg) => deg * Math.PI / 180;
 
-    const R = 6371;
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
 
-    const toRad = degrees => degrees * Math.PI / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) *
+      Math.cos(toRad(lat2)) *
+      Math.sin(dLon / 2) ** 2;
 
-    const dLat = toRad(lat2 - lat1);
-    const dLon = toRad(lon2 - lon1);
-
-    const a =
-        Math.sin(dLat / 2) ** 2 +
-        Math.cos(toRad(lat1)) *
-        Math.cos(toRad(lat2)) *
-        Math.sin(dLon / 2) ** 2;
-
-    const c = 2 * Math.atan2(
-        Math.sqrt(a),
-        Math.sqrt(1 - a)
-    );
-
-    return R * c;
+  return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-// Calculate flight details
-function calculateFlight(fromAirport, toAirport) {
+function calculateFlight(origin, destination) {
+  const distance = Math.round(
+    calculateDistance(
+      origin.lat,
+      origin.lon,
+      destination.lat,
+      destination.lon
+    )
+  );
 
-    const distance = calculateDistance(
-        fromAirport.lat,
-        fromAirport.lon,
-        toAirport.lat,
-        toAirport.lon
-    );
-
-    return {
-        distance: Math.round(distance),
-        fuel: Math.ceil(distance / 150),
-        coins: 1 + Math.ceil(distance / 500),
-        time: 2 + Math.ceil(distance / 100)
-    };
+  return {
+    distance,
+    fuel: Math.max(1, Math.ceil(distance / 250)),
+    coins: 1 + Math.ceil(distance / 700),
+    time: 2 + Math.ceil(distance / 320)
+  };
 }
 
-console.log("Route calculations loaded.");
+function shuffle(items) {
+  const result = [...items];
+
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+
+  return result;
+}

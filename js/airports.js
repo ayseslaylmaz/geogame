@@ -1,85 +1,41 @@
+const AIRPORTS = [
+  { id: "ESB", city: "Ankara", country: "Türkiye", region: "Turkey", lat: 40.1281, lon: 32.9951 },
+  { id: "IST", city: "Istanbul", country: "Türkiye", region: "Turkey", lat: 41.2753, lon: 28.7519 },
+  { id: "ADB", city: "Izmir", country: "Türkiye", region: "Turkey", lat: 38.2924, lon: 27.1570 },
+  { id: "AYT", city: "Antalya", country: "Türkiye", region: "Turkey", lat: 36.8987, lon: 30.8006 },
+  { id: "TZX", city: "Trabzon", country: "Türkiye", region: "Turkey", lat: 40.9951, lon: 39.7897 },
+  { id: "AJI", city: "Agri", country: "Türkiye", region: "Turkey", lat: 39.6545, lon: 43.0259 },
+  { id: "VAN", city: "Van", country: "Türkiye", region: "Turkey", lat: 38.4682, lon: 43.3323 },
+  { id: "COV", city: "Adana", country: "Türkiye", region: "Turkey", lat: 36.8909, lon: 35.0713 },
+  { id: "SZF", city: "Samsun", country: "Türkiye", region: "Turkey", lat: 41.2545, lon: 36.5671 },
+  { id: "ASR", city: "Kayseri", country: "Türkiye", region: "Turkey", lat: 38.7704, lon: 35.4954 },
+  { id: "GZT", city: "Gaziantep", country: "Türkiye", region: "Turkey", lat: 36.9472, lon: 37.4787 },
+  { id: "KYA", city: "Konya", country: "Türkiye", region: "Turkey", lat: 37.9790, lon: 32.5619 },
+  { id: "VAS", city: "Sivas", country: "Türkiye", region: "Turkey", lat: 39.8138, lon: 36.9035 },
+  { id: "DNZ", city: "Denizli", country: "Türkiye", region: "Turkey", lat: 37.7856, lon: 29.7013 },
+  { id: "MLX", city: "Malatya", country: "Türkiye", region: "Turkey", lat: 38.4353, lon: 38.0910 },
 
-/* SKY CARGO - AIRPORT DATA */
+  { id: "LHR", city: "London", country: "United Kingdom", region: "Europe", lat: 51.4700, lon: -0.4543 },
+  { id: "CDG", city: "Paris", country: "France", region: "Europe", lat: 49.0097, lon: 2.5479 },
+  { id: "FCO", city: "Rome", country: "Italy", region: "Europe", lat: 41.8003, lon: 12.2389 },
+  { id: "BER", city: "Berlin", country: "Germany", region: "Europe", lat: 52.3667, lon: 13.5033 },
+  { id: "AMS", city: "Amsterdam", country: "Netherlands", region: "Europe", lat: 52.3105, lon: 4.7683 },
+  { id: "MAD", city: "Madrid", country: "Spain", region: "Europe", lat: 40.4983, lon: -3.5676 },
+  { id: "VIE", city: "Vienna", country: "Austria", region: "Europe", lat: 48.1103, lon: 16.5697 },
+  { id: "ATH", city: "Athens", country: "Greece", region: "Europe", lat: 37.9364, lon: 23.9445 },
+  { id: "PRG", city: "Prague", country: "Czechia", region: "Europe", lat: 50.1008, lon: 14.2600 },
+  { id: "ZRH", city: "Zurich", country: "Switzerland", region: "Europe", lat: 47.4581, lon: 8.5555 },
 
-const airports = [
-    {
-        id: "ESB",
-        city: "Ankara",
-        name: "Esenboga Airport",
-        country: "Türkiye",
-        lat: 40.1281,
-        lon: 32.9951
-    },
-    {
-        id: "IST",
-        city: "Istanbul",
-        name: "Istanbul Airport",
-        country: "Türkiye",
-        lat: 41.2753,
-        lon: 28.7519
-    },
-    {
-        id: "ADB",
-        city: "Izmir",
-        name: "Adnan Menderes Airport",
-        country: "Türkiye",
-        lat: 38.2924,
-        lon: 27.1570
-    },
-    {
-        id: "AYT",
-        city: "Antalya",
-        name: "Antalya Airport",
-        country: "Türkiye",
-        lat: 36.8987,
-        lon: 30.8006
-    },
-    {
-        id: "TZX",
-        city: "Trabzon",
-        name: "Trabzon Airport",
-        country: "Türkiye",
-        lat: 40.9951,
-        lon: 39.7897
-    },
-    {
-        id: "AJI",
-        city: "Agri",
-        name: "Agri Ahmed-i Hani Airport",
-        country: "Türkiye",
-        lat: 39.6545,
-        lon: 43.0259
-    },
-    {
-        id: "VAN",
-        city: "Van",
-        name: "Van Ferit Melen Airport",
-        country: "Türkiye",
-        lat: 38.4682,
-        lon: 43.3323
-    },
-    {
-        id: "COV",
-        city: "Adana",
-        name: "Cukurova International Airport",
-        country: "Türkiye",
-        lat: 36.8909,
-        lon: 35.0713
-    },
-    {
-        id: "SZF",
-        city: "Samsun",
-        name: "Samsun Carsamba Airport",
-        country: "Türkiye",
-        lat: 41.2545,
-        lon: 36.5671
-    },
-    {
-        id: "ASR",
-        city: "Kayseri",
-        name: "Kayseri Airport",
-        country: "Türkiye",
-        lat: 38.7704,
-        lon: 35.4954
-    }
+  { id: "DXB", city: "Dubai", country: "United Arab Emirates", region: "World", lat: 25.2532, lon: 55.3657 },
+  { id: "CAI", city: "Cairo", country: "Egypt", region: "World", lat: 30.1219, lon: 31.4056 },
+  { id: "DEL", city: "Delhi", country: "India", region: "World", lat: 28.5562, lon: 77.1000 },
+  { id: "NRT", city: "Tokyo", country: "Japan", region: "World", lat: 35.7719, lon: 140.3929 },
+  { id: "ICN", city: "Seoul", country: "South Korea", region: "World", lat: 37.4602, lon: 126.4407 },
+  { id: "JFK", city: "New York", country: "United States", region: "World", lat: 40.6413, lon: -73.7781 },
+  { id: "YYZ", city: "Toronto", country: "Canada", region: "World", lat: 43.6777, lon: -79.6248 },
+  { id: "GRU", city: "Sao Paulo", country: "Brazil", region: "World", lat: -23.4356, lon: -46.4731 },
+  { id: "CPT", city: "Cape Town", country: "South Africa", region: "World", lat: -33.9696, lon: 18.5972 },
+  { id: "SIN", city: "Singapore", country: "Singapore", region: "World", lat: 1.3644, lon: 103.9915 }
 ];
+
+const airportById = (id) => AIRPORTS.find((airport) => airport.id === id);
